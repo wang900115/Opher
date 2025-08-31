@@ -1,0 +1,7 @@
+# Build subdirectories
+./build
+
+# test 
+./test
+
+*.yaml
