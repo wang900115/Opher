@@ -4,6 +4,6 @@ import "github.com/wang900115/Opher/network"
 
 var Network network.PeerManger
 
-func InitializeNewWork(self *network.SelfPeer) {
+func InitializeNetWork(self *network.SelfPeer) {
 	Network = network.NewGraph(self)
 }
