@@ -1,29 +1,25 @@
 package network
 
-import "sync"
+import (
+	"sync"
 
-type PeerManger interface {
-	Self() *SelfPeer
-	Discovery(p *Peer)
-	ListPeers() []*Peer
-}
+	"github.com/wang900115/Opher/common"
+)
 
-// NetWork peer except self
-type Peer struct {
-	ID          string // Peer's Pubkey hash
-	Address     string // Peer's IP:Port
-	IsValidator bool   // Is validator for BTF
-	LastSeen    int64  // HeartBreak timestamp (healthcheck)
-	Height      int64  // Current local chain height
-}
+type PeerRole int
+
+const (
+	RoleValidator PeerRole = iota
+	RoleFullNode
+	RoleLightNode
+)
 
 // Ownership network idendtifier
 type SelfPeer struct {
-	ID          string // Self's PubKey hash
-	Address     string // Self's IP:Port
-	IsValidator bool   // Is validator for BTF
-	PubKey      []byte // pubKey
-	PriKey      []byte // priKey (store in local)
+	Address     common.NodeAddrAct // Self's IP:Port
+	IsValidator bool               // Is validator for BTF
+	PubKey      []byte             // pubKey
+	PriKey      []byte             // priKey (store in local)
 }
 
 // Local network prototype

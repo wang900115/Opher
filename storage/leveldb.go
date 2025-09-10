@@ -43,3 +43,13 @@ func (l *LevelDB) Exist(key []byte) (bool, error) {
 func (l *LevelDB) Close() error {
 	return l.db.Close()
 }
+
+/*
+Type		Key			Value
+
+Block 	block's hash   block's header 				  => query
+
+Tx		Tx's hash	   IPFS CID   					  => query
+
+State   Address		   Balance, Nonce, Contract state => read/write account's state
+*/
